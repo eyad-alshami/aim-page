@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Academic Project Page</title>
+  <title>AIM: Amending Inherent Interpretability via Self-Supervised Masking</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,28 +52,31 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">AIM: Amending Inherent Interpretability via Self-Supervised Masking</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <a href="https://eyad-alshami.github.io/" target="_blank">Eyad Alshami</a>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <a href="https://scholar.google.com/citations?user=4CgQ7xwAAAAJ&hl=en" target="_blank">Shashank Agnihotri</a>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                    <a href="https://scholar.google.com/citations?user=z76PBfYAAAAJ&hl=en" target="_blank">Bernt Schiele</a>
+                  </span>
+                  <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=KMqMQAcAAAAJ&hl=de" target="_blank">Margret Keuper</a>
                   </span>
                   </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  <div class="is-size-5 publication-authors-affiliation">
+                    <span class="author-block"> Max-Planck-Institute for Informatics, Saarland Informatics Campus, Germany <br> RTG Neuroexplicit Models of Language, Vision, and Action, Saarbrücken, Germany<br>Data and Web Science Group, University of Mannheim, Germany </span>
+                    <span class="publication-avenu"> International Conference on Computer Vision (ICCV) 2025  <span class="has-text-warning has-text-weight-bold">Highlihgt </span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
-                  <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        <a href="" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -95,18 +98,18 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code</span>
+                    <span>Code - Coming Soon...</span>
                   </a>
                 </span>
 
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  <a href="" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -127,13 +130,15 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
+      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%">
+
         <source src="static/videos/banner_video.mp4"
         type="video/mp4">
-      </video>
+      </video> -->
+      <!-- put an image -->
+      <img src="static/images/teaser.png" alt="Teaser Image" class="teaser-image">
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        AIM uses self-supervised masking to focus more on the object of interest, relying only on the image label. As shown, and in terms of attribution localization, it outperforms baseline methods, even in challenging scenarios like the WaterBirds and Hard ImageNet datasets. 
       </h2>
     </div>
   </div>
@@ -148,7 +153,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            It has been observed that deep neural networks (DNNs) often use both genuine as well as spurious features. In this work, we propose “Amending Inherent Interpretability via Self-Supervised Masking” (AIM), a simple yet interestingly effective method that promotes the network’s utilization of genuine features over spurious alternatives with out requiring additional annotations. In particular, AIM uses features at multiple encoding stages to guide a self-supervised, sample-specific feature-masking process. As a result, AIM enables the training of well-performing and inherently interpretable models that faithfully summarize the decision process. We validate AIM across a diverse range of challenging datasets that test both out-of-distribution generalization and fine-grained visual understanding. These include general-purpose classification benchmarks such as ImageNet100, HardImageNet, and ImageWoof, as well as fine-grained classification datasets such as Waterbirds, TravelingBirds, and CUB-200. AIM demonstrates significant dual benefits: interpretability improvements, as measured by the Energy Pointing Game (EPG) score, and accuracy gains over strong baselines. These consistent gains across domains and architectures provide compelling evidence that AIM promotes the use of genuine and meaningful features that directly contribute to improved generalization and human-aligned interpretability.
           </p>
         </div>
       </div>

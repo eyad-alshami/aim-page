@@ -89,6 +89,19 @@ body {
   /*color: #4286f4;*/
 }
 
+.publication-authors-affiliation{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1rem !important;
+  .publication-avenu{
+    margin-top: 0.5rem;
+    font-size: 1.25rem !important;
+    font-weight: bold;
+  }
+}
+
+
 .publication-video {
     position: relative;
     width: 100%;
