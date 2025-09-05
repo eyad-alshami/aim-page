@@ -214,7 +214,7 @@
         <div class="column is-four-fifths">
           
           <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src="static/videos/Architecure_figure.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -222,27 +222,37 @@
   </div>
 </section> -->
 
-<section class="section hero is-small">
+
+<section class="hero is-small">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay="" controls="" muted="" loop="" height="100%">
+        <source src="static/videos/Architecure_figure.mp4" type="video/mp4">
+      </video>
+      <!-- <h2 class="subtitle has-text-centered">
+        <strong>DeepSIM:</strong> Given a <em>single</em> real training image (b) and a corresponding primitive representation (a), our model learns to map between the primitive (a) to the target image (b). At inference, the original primitive (a) is manipulated by the user. Then, the manipulated primitive is passed through the network which outputs a corresponding manipulated image (e) in the real image domain. 
+      </h2> -->
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-small is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full">
         <div class="content">
-          <h2 class="title is-3">Anomaly Detection - A Two-stage Paradigm</h2>
+          <h2 class="title is-3">AIM uses 100% sparse feature maps to make the final decision:</h2>
           <div class="level-set has-text-justified">
             <p>
-              Current, state-of-the-art anomaly detection methods follow this simple, two-stage paradigm:<br>
-
-              (i) Each data point is transformed to a representation, often learned in a self-supervised manner.<br> 
-              (ii) A density estimation model, often as simple as a kNN estimator, is fitted to the normal data provided in a training set.<br>
-
-              To classify a new sample as normal or anomalous, its estimated probability density is computed - low likelihood samples are denoted as anomalies.
+              By employing binary mask estimators as a feature selection mechanism, AIM creates these sparse maps. For instance, we illustrate the masks produced at two stages in a ConvNeXt+AIM model alongside the generated spatially sparse feature maps (the first two columns). The last column demonstrates the final merged feature maps the model uses for classification.
             </p>
           </div>
-          <dir class="image-container">
+          <div class="image-container">
             
-            <img src="static/images/feature_maps.png" alt="Normal and Anomalous Representations" class="center-image">
+            <img src="static/images/sparse_feature_maps@4x.png" alt="Normal and Anomalous Representations" class="center-image">
 
-          </dir>
+          </div>
         </div>
       </div>
     </div>
@@ -252,7 +262,7 @@
 
 
 <!-- Video carousel -->
-<section class="section hero is-small is-light">
+<section class="section hero is-small">
   <div class="hero-body">
     <div class="container lead-container">
       
@@ -385,10 +395,18 @@
 
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
+  <section class="section is-light" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@misc{alshami2025aimamendinginherentinterpretability,
+        title={AIM: Amending Inherent Interpretability via Self-Supervised Masking}, 
+        author={Eyad Alshami and Shashank Agnihotri and Bernt Schiele and Margret Keuper},
+        year={2025},
+        eprint={2508.11502},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV},
+        url={https://arxiv.org/abs/2508.11502}, 
+  }</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
