@@ -184,6 +184,13 @@ section.hero{
       color:#969696
     }
   }
+
+  .content{
+    p.note {
+      color:#969696
+    }
+  }
+
   /* .lead-text {
     font-size: clamp(1rem, 1.6vw + 1rem, 1.7rem);
     line-height: 1.6;
