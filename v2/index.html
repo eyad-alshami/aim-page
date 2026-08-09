@@ -86,6 +86,7 @@
     <div class="container blog main inline" style="padding-top: 20px; padding-bottom: 20px;">
         <style>
             .code-demo pre.code::after { display: none; }
+            .code-demo pre.code { white-space: pre; overflow-x: auto; }
         </style>
         <div class="code-demo" id="demo" style="width: 100%">
             <div class="window" role="img" aria-label="Code example">
@@ -96,10 +97,11 @@
                 <div class="code-wrap">
 <pre class="code" data-language="python"><span class="token keyword">import</span> torch
 
-<span class="token comment"># ImageNet-pretrained AIM models (ConvNeXt-T):</span>
-<span class="token comment">#   aim_imagenet_anneal_all_alpha10   mask area annealed over all epochs,     alpha=10</span>
-<span class="token comment">#   aim_imagenet_anneal_all_alpha5    mask area annealed over all epochs,     alpha=5</span>
-<span class="token comment">#   aim_imagenet_anneal_half_alpha10  mask area annealed over the first half, alpha=10</span>
+<span class="token comment"># ImageNet-pretrained AIM models (ConvNeXt-T)</span>
+<span class="token comment"># mask-area annealing period / loss weight:</span>
+<span class="token comment">#  aim_imagenet_anneal_all_alpha10   all epochs, alpha=10</span>
+<span class="token comment">#  aim_imagenet_anneal_all_alpha5    all epochs, alpha=5</span>
+<span class="token comment">#  aim_imagenet_anneal_half_alpha10  first half, alpha=10</span>
 model <span class="token operator">=</span> torch<span class="token punctuation">.</span>hub<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">'eyad-al-shami/AIM'</span><span class="token punctuation">,</span> <span class="token string">'aim_imagenet_anneal_all_alpha10'</span><span class="token punctuation">)</span>
 
 <span class="token comment"># class logits + one binary mask per FPN level</span>
