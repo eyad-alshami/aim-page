@@ -268,18 +268,22 @@ section.hero{
 /* ---- Code boxes (adapted from the Clarity template, as on the AnyUp page) ---- */
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap");
 
-pre {
+pre,
+.content pre {
   font-family: "Fira Code", monospace;
   position: relative;
   border-radius: 10px;
   border: solid 1px #c6c6c6;
   overflow: hidden;
+  background-color: #fafafa;
+  padding: 0;
 }
 
-pre code {
+pre code,
+.content pre code {
   background-color: #fafafa !important;
   display: block;
-  padding: 1.5vh 1.5vw !important;
+  padding: 1.25em 1.5em !important;
   overflow-x: auto;
   font-family: "Fira Code", monospace;
   font-size: 0.85em;
