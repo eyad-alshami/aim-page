@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".slide-menu").each(function(){const n=$(this),e=n.find(".dot"),t=n.nextAll(".slide-content");e.each(function(n){$(this).on("click",function(){e.removeClass("active"),$(this).addClass("active"),t.hide(),t.eq(n).show()})})})});
