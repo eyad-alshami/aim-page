@@ -9,7 +9,7 @@
     <meta name="robots" content="all">
     <meta content="en_EN" property="og:locale">
     <meta content="website" property="og:type">
-    <meta content="https://eyad-alshami.github.io/aim-page/v2/" property="og:url">
+    <meta content="https://eyad-alshami.github.io/aim-page/" property="og:url">
     <meta content="AIM: Amending Inherent Interpretability via Self-Supervised Masking" property="og:title">
     <meta content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking." property="og:description">
     <meta content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png" property="og:image">
@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking">
     <meta name="twitter:description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking.">
     <meta name="twitter:image:src" content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png">
-    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
 
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
     <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
@@ -28,7 +28,11 @@
 
 <body>
     <!-- Title Page -->
-    <div class="container blog" id="first-content" style="background-color: #F6F6F6;">
+    <div class="container blog" id="first-content" style="background-color: #F6F6F6; position: relative;">
+        <a href="https://eyad-alshami.github.io" class="button icon" aria-label="Back to homepage"
+           style="background-color: #0F66741A; position: absolute; top: 20px; left: 24px;">
+            <i class="fa-solid fa-arrow-left"></i>&nbsp; Back
+        </a>
         <div class="blog-title no-cover">
             <div class="blog-intro">
                 <div>
@@ -49,7 +53,7 @@
                     </p>
 
                     <div style="padding-top: 20px; padding-bottom: 20px;">
-                        <img src="../static/images/teaser.png" style="width: 100%; border-radius: 8px;">
+                        <img src="static/images/teaser.png" style="width: 100%; border-radius: 8px;">
                         <p class="caption" style="text-align: center; margin-left: auto; margin-right: auto;">
                             AIM learns sample-specific binary masks that keep only decision-relevant features — supervised by nothing but the image label.
                         </p>
@@ -127,7 +131,7 @@ logits<span class="token punctuation">,</span> masks <span class="token operator
     </div>
 
     <div class="container blog main">
-        <video loop playsinline muted autoplay controls src="../static/videos/Architecure_figure.mp4" style="width: 100%;"></video>
+        <video loop playsinline muted autoplay controls src="static/videos/Architecure_figure.mp4" style="width: 100%;"></video>
         <p class="caption">
             <b>The AIM architecture.</b> Mask estimators at multiple encoding stages produce binary masks that gate the top-down feature maps used for classification.
         </p>
@@ -141,7 +145,7 @@ logits<span class="token punctuation">,</span> masks <span class="token operator
     </div>
 
     <div class="container blog main">
-        <img src="../static/images/sparse_feature_maps@4x.png">
+        <img src="static/images/sparse_feature_maps@4x.png">
         <p class="caption">
             Model: ConvNeXt-tiny with AIM (2 stages, 35% active area).
         </p>
@@ -172,37 +176,37 @@ logits<span class="token punctuation">,</span> masks <span class="token operator
         </div>
 
         <div class="slide-content" style="display: block;">
-            <video loop playsinline muted autoplay src="../static/videos/him_1.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/him_1.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/him_2.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/him_2.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/him_3.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/him_3.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/him_4.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/him_4.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/im_5.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/im_5.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/im_6.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/im_6.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/im_7.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/im_7.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/wb_1.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/wb_1.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/wb_2.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/wb_2.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/wb_3.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/wb_3.mp4" style="width: 100%"></video>
         </div>
         <div class="slide-content" style="display: none;">
-            <video loop playsinline muted autoplay src="../static/videos/wb_4.mp4" style="width: 100%"></video>
+            <video loop playsinline muted autoplay src="static/videos/wb_4.mp4" style="width: 100%"></video>
         </div>
 
         <p class="caption">
@@ -222,7 +226,7 @@ logits<span class="token punctuation">,</span> masks <span class="token operator
             </span>
         </h2>
         <div style="position: relative; width: 100%; margin-top: 10px;">
-            <img id="imgSource" src="../static/images/results.png" style="width: 100%; height: auto; display: block;" alt="Results">
+            <img id="imgSource" src="static/images/results.png" style="width: 100%; height: auto; display: block;" alt="Results">
             <div id="magnifier">
                 <img id="magImg" alt="" aria-hidden="true">
             </div>
