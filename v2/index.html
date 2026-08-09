@@ -84,160 +84,29 @@
     </div>
 
     <div class="container blog main inline" style="padding-top: 20px; padding-bottom: 20px;">
-        <div class="code-demo" id="demo" data-speed="0.5" data-loop="false" data-start="view" style="width: 100%">
-            <div class="window" role="img" aria-label="Typing code demo window">
+        <style>
+            .code-demo pre.code::after { display: none; }
+        </style>
+        <div class="code-demo" id="demo" style="width: 100%">
+            <div class="window" role="img" aria-label="Code example">
                 <div class="titlebar">
                     <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
                     <div class="spacer"></div>
-                    <button class="replay" type="button" title="Replay (Ctrl+R)">&#8634; Replay</button>
                 </div>
                 <div class="code-wrap">
-                    <pre class="code" aria-label="Animated code block" data-language="python"></pre>
+<pre class="code" data-language="python"><span class="token keyword">import</span> torch
+
+<span class="token comment"># ImageNet-pretrained AIM models (ConvNeXt-T):</span>
+<span class="token comment">#   aim_imagenet_anneal_all_alpha10   mask area annealed over all epochs,     alpha=10</span>
+<span class="token comment">#   aim_imagenet_anneal_all_alpha5    mask area annealed over all epochs,     alpha=5</span>
+<span class="token comment">#   aim_imagenet_anneal_half_alpha10  mask area annealed over the first half, alpha=10</span>
+model <span class="token operator">=</span> torch<span class="token punctuation">.</span>hub<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">'eyad-al-shami/AIM'</span><span class="token punctuation">,</span> <span class="token string">'aim_imagenet_anneal_all_alpha10'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># class logits + one binary mask per FPN level</span>
+logits<span class="token punctuation">,</span> masks <span class="token operator">=</span> model<span class="token punctuation">.</span><span class="token function">predict</span><span class="token punctuation">(</span>images<span class="token punctuation">)</span></pre>
                 </div>
             </div>
-
-            <script type="text/plain" class="code-source">
-# Inherently interpretable models with AIM
-import torch
-
-# load an ImageNet-pretrained AIM model, other options:
-#   aim_imagenet_anneal_all_alpha5, aim_imagenet_anneal_half_alpha10
-model = torch.hub.load('eyad-al-shami/AIM', 'aim_imagenet_anneal_all_alpha10')
-
-# class logits + one binary mask per FPN level
-logits, masks = model.predict(images)</script>
         </div>
-
-        <script>
-
-        (() => {
-          class Typer {
-            constructor(root, opts = {}) {
-              this.root = root;
-              this.pre = root.querySelector('pre.code');
-              this.codeEl = this.pre.querySelector('code') || this.pre; // supports old markup
-              const source = root.querySelector('.code-source');
-              this.content = (source?.textContent ?? "").replace(/^\n/, "");
-              if (!this.content.trim()) {
-                this.content = ``;
-              }
-
-              const d = root.dataset;
-              const speed = Number(d.speed || opts.speed || 1);
-              this.speed = isFinite(speed) && speed > 0 ? speed : 1;
-              this.loop = (d.loop ?? String(opts.loop ?? false)).toLowerCase() === "true";
-              this.startMode = (d.start || opts.start || "load").toLowerCase(); // load|view|manual
-
-              // language detection for Prism
-              this.language =
-                (this.codeEl.className.match(/language-([\w-]+)/)?.[1]) ||
-                this.pre.dataset.language || "python";
-
-              this.index = 0;
-              this.raw = "";
-              this._timer = null;
-              this._running = false;
-
-              this._bind();
-
-              const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-              if (prefersReduced) {
-                this._renderToDOM(this.content);
-                return;
-              }
-              if (this.startMode === "load") this.start();
-              else if (this.startMode === "view") this._observeStart();
-            }
-
-            _bind(){
-              // replay button removed/hidden; keep key handler no-op safe
-              window.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && (e.key === 'r' || e.key === 'R')) {
-                  e.preventDefault(); /* no replay */
-                }
-              });
-            }
-
-            _observeStart(){
-              const io = new IntersectionObserver((entries) => {
-                entries.forEach((ent) => {
-                  if (ent.isIntersecting && !this._running) {
-                    this.start(200);
-                    io.disconnect();
-                  }
-                });
-              }, { root: null, threshold: .25 });
-              io.observe(this.root);
-            }
-
-            reset(){
-              this.stop();
-              this.index = 0;
-              this.raw = "";
-              this._renderToDOM("");
-            }
-
-            stop(){
-              this._running = false;
-              if (this._timer) { clearTimeout(this._timer); this._timer = null; }
-            }
-
-            start(initialDelay = 0){
-              if (this._running) return;
-              this._running = true;
-              const tick = () => {
-                if (!this._running) return;
-                if (this.index >= this.content.length) {
-                  this._running = false;
-                  // do not loop if data-loop="false"
-                  if (this.loop) {
-                    this._timer = setTimeout(() => { this.reset(); this.start(400); }, 1200);
-                  }
-                  return;
-                }
-                const ch = this.content[this.index++];
-                this.raw += ch;
-                this._renderToDOM(this.raw);
-                this._timer = setTimeout(tick, this._delayFor(ch));
-              };
-              this._timer = setTimeout(tick, initialDelay);
-            }
-
-            _renderToDOM(s){
-              // Prefer Prism if loaded; fallback to escaped text
-              if (window.Prism && Prism.languages[this.language]) {
-                this.codeEl.innerHTML = Prism.highlight(s, Prism.languages[this.language], this.language);
-              } else {
-                this.codeEl.textContent = s;
-              }
-            }
-
-            _delayFor(ch){
-              const base = (28 + Math.random()*32) * this._speedScale();
-              if (ch === '\n') return 260 * this.speed + 160;
-              if (",.;:".includes(ch)) return base + 180 * this._speedScale();
-              if (")]}".includes(ch)) return base + 90 * this._speedScale();
-              if ("-=>".includes(ch)) return base + 60 * this._speedScale();
-              return base;
-            }
-            _speedScale(){ return Math.max(0.15, this.speed); }
-          }
-
-          // Auto-init all .code-demo blocks on the page
-          function initAll(){
-            document.querySelectorAll('.code-demo').forEach((el) => { el._typer = new Typer(el); });
-          }
-          window.CodeTyper = {
-            initAll,
-            create: (root, options) => new Typer(root, options),
-            start: (root) => root?._typer?.start(),
-            stop: (root) => root?._typer?.stop(),
-            reset: (root) => root?._typer?.reset(),
-          };
-          document.addEventListener('DOMContentLoaded', initAll);
-        })();
-        
-        </script>
     </div>
 
     <div class="container blog main" style="text-align: justify">
