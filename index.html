@@ -4,23 +4,20 @@
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking">
+  <meta name="description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking — improving both accuracy and interpretability without extra annotations.">
   <meta property="og:title" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking"/>
-  <meta property="og:description" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking — improving both accuracy and interpretability without extra annotations."/>
+  <meta property="og:url" content="https://eyad-alshami.github.io/aim-page/"/>
+  <meta property="og:image" content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
 
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking">
+  <meta name="twitter:description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking — improving both accuracy and interpretability without extra annotations.">
+  <meta name="twitter:image" content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="interpretability, self-supervised masking, spurious features, ICCV 2025, AIM, explainability, computer vision">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -116,12 +113,23 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a target="_blank"
+                    <a href="https://github.com/eyad-al-shami/AIM" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code - Coming Soon...</span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                  <!-- Models link -->
+                  <span class="link-block">
+                    <a href="https://github.com/eyad-al-shami/AIM/releases/tag/v1.0.0" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-cube"></i>
+                    </span>
+                    <span>Models</span>
                   </a>
                 </span>
 
@@ -162,7 +170,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            It has been observed that deep neural networks (DNNs) often use both genuine as well as spurious features. In this work, we propose “Amending Inherent Interpretability via Self-Supervised Masking” (AIM), a simple yet interestingly effective method that promotes the network’s utilization of genuine features over spurious alternatives with out requiring additional annotations. In particular, AIM uses features at multiple encoding stages to guide a self-supervised, sample-specific feature-masking process. As a result, AIM enables the training of well-performing and inherently interpretable models that faithfully summarize the decision process. We validate AIM across a diverse range of challenging datasets that test both out-of-distribution generalization and fine-grained visual understanding. These include general-purpose classification benchmarks such as ImageNet100, HardImageNet, and ImageWoof, as well as fine-grained classification datasets such as Waterbirds, TravelingBirds, and CUB-200. AIM demonstrates significant dual benefits: interpretability improvements, as measured by the Energy Pointing Game (EPG) score, and accuracy gains over strong baselines. These consistent gains across domains and architectures provide compelling evidence that AIM promotes the use of genuine and meaningful features that directly contribute to improved generalization and human-aligned interpretability.
+            It has been observed that deep neural networks (DNNs) often use both genuine as well as spurious features. In this work, we propose “Amending Inherent Interpretability via Self-Supervised Masking” (AIM), a simple yet interestingly effective method that promotes the network’s utilization of genuine features over spurious alternatives without requiring additional annotations. In particular, AIM uses features at multiple encoding stages to guide a self-supervised, sample-specific feature-masking process. As a result, AIM enables the training of well-performing and inherently interpretable models that faithfully summarize the decision process. We validate AIM across a diverse range of challenging datasets that test both out-of-distribution generalization and fine-grained visual understanding. These include general-purpose classification benchmarks such as ImageNet100, HardImageNet, and ImageWoof, as well as fine-grained classification datasets such as Waterbirds, TravelingBirds, and CUB-200. AIM demonstrates significant dual benefits: interpretability improvements, as measured by the Energy Pointing Game (EPG) score, and accuracy gains over strong baselines. These consistent gains across domains and architectures provide compelling evidence that AIM promotes the use of genuine and meaningful features that directly contribute to improved generalization and human-aligned interpretability.
           </p>
         </div>
       </div>
@@ -234,12 +242,17 @@
 <section class="hero is-small">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay="" controls="" muted="" loop="" height="100%">
+      <div class="content">
+        <h2 class="title is-3">How AIM works</h2>
+        <div class="level-set has-text-justified">
+          <p>
+            AIM augments a standard backbone with a top-down path. At selected encoding stages, a lightweight mask estimator predicts a sample-specific <em>binary</em> mask that selects which spatial features may contribute to the decision. During training, an annealed active-area objective gradually shrinks the allowed mask area, so the network learns to keep only the features that genuinely support the prediction — supervised by nothing but the image label.
+          </p>
+        </div>
+      </div>
+      <video poster="" id="tree" autoplay="" controls="" muted="" loop="" playsinline="" height="100%">
         <source src="static/videos/Architecure_figure.mp4" type="video/mp4">
       </video>
-      <!-- <h2 class="subtitle has-text-centered">
-        <strong>DeepSIM:</strong> Given a <em>single</em> real training image (b) and a corresponding primitive representation (a), our model learns to map between the primitive (a) to the target image (b). At inference, the original primitive (a) is manipulated by the user. Then, the manipulated primitive is passed through the network which outputs a corresponding manipulated image (e) in the real image domain. 
-      </h2> -->
     </div>
   </div>
 </section>
@@ -308,7 +321,7 @@
         </div>
         
         <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+          <video poster="" id="video3" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/him_3.mp4"
             type="video/mp4">
@@ -316,7 +329,7 @@
         </div>
 
         <div class="item item-video4">
-          <video poster="" id="video4" autoplay controls muted loop height="100%">\
+          <video poster="" id="video4" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/him_4.mp4"
             type="video/mp4">
@@ -324,7 +337,7 @@
         </div>
 
         <div class="item item-video5">
-          <video poster="" id="video5" autoplay controls muted loop height="100%">\
+          <video poster="" id="video5" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/im_5.mp4"
             type="video/mp4">
@@ -332,7 +345,7 @@
         </div>
 
         <div class="item item-video6">
-          <video poster="" id="video6" autoplay controls muted loop height="100%">\
+          <video poster="" id="video6" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/im_6.mp4"
             type="video/mp4">
@@ -340,7 +353,7 @@
         </div>
 
         <div class="item item-video7">
-          <video poster="" id="video7" autoplay controls muted loop height="100%">\
+          <video poster="" id="video7" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/im_7.mp4"
             type="video/mp4">
@@ -348,7 +361,7 @@
         </div>
 
         <div class="item item-video8">
-          <video poster="" id="video8" autoplay controls muted loop height="100%">\
+          <video poster="" id="video8" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/wb_1.mp4"
             type="video/mp4">
@@ -356,7 +369,7 @@
         </div>
 
         <div class="item item-video9">
-          <video poster="" id="video9" autoplay controls muted loop height="100%">\
+          <video poster="" id="video9" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/wb_2.mp4"
             type="video/mp4">
@@ -364,7 +377,7 @@
         </div>
 
         <div class="item item-video10">
-          <video poster="" id="video10" autoplay controls muted loop height="100%">\
+          <video poster="" id="video10" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/wb_3.mp4"
             type="video/mp4">
@@ -372,7 +385,7 @@
         </div>
 
         <div class="item item-video11">
-          <video poster="" id="video11" autoplay controls muted loop height="100%">\
+          <video poster="" id="video11" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
             <source src="static/videos/wb_4.mp4"
             type="video/mp4">
@@ -390,7 +403,12 @@
     <div class="columns is-centered">
       <div class="column is-full">
         <div class="content">
-          <h2 class="title is-3">Results:</h2>
+          <h2 class="title is-3">Results</h2>
+          <div class="level-set has-text-justified">
+            <p>
+              Across general-purpose (ImageNet-100, Hard ImageNet, ImageWoof) and fine-grained (Waterbirds, TravelingBirds, CUB-200) benchmarks, AIM improves both classification accuracy and attribution localization (EPG score) over strong baselines — consistently, across backbones.
+            </p>
+          </div>
           <div class="image-container">
             <img src="static/images/results.png" alt="Results" class="center-image">
           </div>
@@ -399,6 +417,34 @@
     </div>
   </div>
 </section>
+
+
+<!-- Quick start -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Try AIM in three lines</h2>
+          <p>
+            Pretrained ImageNet models load directly through PyTorch Hub:
+          </p>
+          <pre><code>import torch
+
+model = torch.hub.load("eyad-al-shami/AIM", "aim_imagenet_anneal_all_alpha10")
+masks = model.predict_masks(images)   # one binary mask per FPN level</code></pre>
+          <p>
+            Checkpoints for CUB-200, TravelingBirds and Waterbirds (25% and 35% active-area variants) are available on the
+            <a href="https://github.com/eyad-al-shami/AIM/releases/tag/v1.0.0" target="_blank">releases page</a>,
+            with a download script and inference example in the
+            <a href="https://github.com/eyad-al-shami/AIM" target="_blank">repository</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End quick start -->
 
 
 
