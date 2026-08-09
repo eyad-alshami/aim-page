@@ -1,553 +1,337 @@
-<!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
-  <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking — improving both accuracy and interpretability without extra annotations.">
-  <meta property="og:title" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking"/>
-  <meta property="og:description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking — improving both accuracy and interpretability without extra annotations."/>
-  <meta property="og:url" content="https://eyad-alshami.github.io/aim-page/"/>
-  <meta property="og:image" content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIM: Amending Inherent Interpretability via Self-Supervised Masking</title>
+    <meta name="description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking — improving both accuracy and interpretability without extra annotations.">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="robots" content="all">
+    <meta content="en_EN" property="og:locale">
+    <meta content="website" property="og:type">
+    <meta content="https://eyad-alshami.github.io/aim-page/v2/" property="og:url">
+    <meta content="AIM: Amending Inherent Interpretability via Self-Supervised Masking" property="og:title">
+    <meta content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking." property="og:description">
+    <meta content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png" property="og:image">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking">
+    <meta name="twitter:description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking.">
+    <meta name="twitter:image:src" content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png">
+    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
 
-
-  <meta name="twitter:title" content="AIM: Amending Inherent Interpretability via Self-Supervised Masking">
-  <meta name="twitter:description" content="AIM (ICCV 2025) trains inherently interpretable models via self-supervised feature masking — improving both accuracy and interpretability without extra annotations.">
-  <meta name="twitter:image" content="https://eyad-alshami.github.io/aim-page/static/images/teaser.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="keywords" content="interpretability, self-supervised masking, spurious features, ICCV 2025, AIM, explainability, computer vision">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  <title>AIM: Amending Inherent Interpretability via Self-Supervised Masking</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
-
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
+    <link href="assets/fontawesome-free-7.2.0-web/css/all.min.css" rel="stylesheet">
+    <script src="assets/scripts/navbar.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
+    <!-- Title Page -->
+    <div class="container blog" id="first-content" style="background-color: #F6F6F6;">
+        <div class="blog-title no-cover">
+            <div class="blog-intro">
+                <div>
+                    <h1 class="title"><b>AIM</b>: Amending Inherent Interpretability via Self-Supervised Masking</h1>
+                    <p class="author">
+                        <a href="https://eyad-alshami.github.io/">Eyad Alshami</a><sup>1,2</sup>,
+                        <a href="https://scholar.google.com/citations?user=4CgQ7xwAAAAJ&hl=en">Shashank Agnihotri</a><sup>3</sup>,
+                        <a href="https://scholar.google.com/citations?user=z76PBfYAAAAJ&hl=en">Bernt Schiele</a><sup>1</sup> and
+                        <a href="https://scholar.google.com/citations?user=KMqMQAcAAAAJ&hl=de">Margret Keuper</a><sup>1,3</sup>
+                    </p>
+                    <p class="author" style="padding-top: 0px;">
+                        <sup>1</sup>Max Planck Institute for Informatics, Saarland Informatics Campus,
+                        <sup>2</sup>RTG Neuroexplicit Models, <sup>3</sup>University of Mannheim
+                    </p>
 
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-start">
-        <a class="button is-light" href="https://eyad-alshami.github.io" aria-label="Back to homepage">
-          <span class="icon"><i class="fas fa-arrow-left" aria-hidden="true"></i></span>
-          <span>Back</span>
-        </a>
-      </div>
-  </nav>
+                    <p style="text-align: left !important; margin: 0; text-transform: uppercase; font-weight: 700; font-size: 85%; color: #0f6674">
+                        ICCV 2025 &middot; Highlighted Paper
+                    </p>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">AIM: Amending Inherent Interpretability via Self-Supervised Masking</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a href="https://eyad-alshami.github.io/" target="_blank">Eyad Alshami<sup>1,2</sup></a>,</span>
-                <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=4CgQ7xwAAAAJ&hl=en" target="_blank">Shashank Agnihotri<sup>3</sup></a>,</span>
-                  <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=z76PBfYAAAAJ&hl=en" target="_blank">Bernt Schiele<sup>1</sup></a>
-                  </span>
-                  <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=KMqMQAcAAAAJ&hl=de" target="_blank">Margret Keuper<sup>1,3</sup></a>
-                  </span>
-                  </div>
+                    <div style="padding-top: 20px; padding-bottom: 20px;">
+                        <img src="../static/images/teaser.png" style="width: 100%; border-radius: 8px;">
+                        <p class="caption" style="text-align: center; margin-left: auto; margin-right: auto;">
+                            AIM learns sample-specific binary masks that keep only decision-relevant features — supervised by nothing but the image label.
+                        </p>
+                    </div>
 
-                  <div class="is-size-5 publication-authors-affiliation">
-                    <span class="author-block"> <sup>1</sup>Max-Planck-Institute for Informatics, Saarland Informatics Campus, Germany <br> <sup>2</sup>RTG Neuroexplicit Models of Language, Vision, and Action, Saarbrücken, Germany<br><sup>3</sup>Data and Web Science Group, University of Mannheim, Germany </span>
-                    <span class="publication-avenu"> International Conference on Computer Vision (ICCV) 2025 <span class="highlight-badge is-block-tablet is-block-mobile">🌟 Highlighted Paper</span>
-                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
-                  </div>
+                    <p class="abstract" style="text-align: justify">
+                        Deep neural networks often rely on both genuine and spurious features. AIM is a simple yet effective method that promotes the use of genuine features — without requiring any additional annotations. It uses features from multiple encoding stages to guide a self-supervised, sample-specific feature-masking process, enabling the training of well-performing, inherently interpretable models that faithfully summarize their decision process. Across general-purpose and fine-grained benchmarks, AIM delivers dual benefits: better interpretability, measured by the Energy Pointing Game, and higher accuracy.
+                    </p>
 
-                    <!-- ArXiv abstract Link -->
-                    <span class="link-block">
-                      <a href="https://arxiv.org/abs/2508.11502" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="ai ai-arxiv"></i>
-                      </span>
-                      <span>arXiv</span>
-                    </a>
-                    </span>
-
-                    <!-- <div class="publication-links">
-
-                      <span class="link-block">
-                        <a href="https://arxiv.org/abs/2508.11502" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span> -->
-
-                    <!-- <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span> -->
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/eyad-al-shami/AIM" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                  <!-- Models link -->
-                  <span class="link-block">
-                    <a href="https://github.com/eyad-al-shami/AIM/releases/tag/v1.0.0" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-cube"></i>
-                    </span>
-                    <span>Models</span>
-                  </a>
-                </span>
-
-
+                    <div class="info" style="padding-top: 20px;">
+                        <div>
+                            <a href="https://arxiv.org/abs/2508.11502" class="button icon" style="background-color: #0F66741A"> Paper <i class="fa-solid fa-book-open"></i></a> &nbsp;&nbsp;
+                            <a href="https://github.com/eyad-al-shami/AIM" class="button icon" style="background-color: #0F66741A"> Code <i class="fa-solid fa-code"></i></a> &nbsp;&nbsp;
+                            <a href="https://github.com/eyad-al-shami/AIM/releases/tag/v1.0.0" class="button icon" style="background-color: #0F66741A"> Models <i class="fa-solid fa-cube"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-</section>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%">
+    <div class="container blog main first" id="blog-main" style="text-align: justify">
+        <h1>Introduction</h1>
+        <p class="text">
+            It has been observed that deep neural networks use spurious shortcut features alongside genuine ones — backgrounds instead of birds, context instead of objects. AIM amends this at training time: a self-supervised masking mechanism forces the network to make its decision from a small, sample-specific subset of spatial features, and to keep exactly the features that genuinely support the prediction. The result is a model that is inherently interpretable — its masks <em>are</em> its explanation — and, perhaps surprisingly, more accurate.
+        </p>
 
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video> -->
-      <!-- put an image -->
-      <img src="static/images/teaser.png" alt="Teaser Image" class="teaser-image">
-      <h2 class="subtitle has-text-centered">
-        AIM uses self-supervised masking to focus more on the object of interest, relying only on the image label. As shown, and in terms of attribution localization, it outperforms baseline methods, even in challenging scenarios like the WaterBirds and Hard ImageNet datasets. 
-      </h2>
+        <p class="text">
+            AIM models are released and ready to use — one line to load, one line to get predictions together with the masks:
+        </p>
     </div>
-  </div>
-</section>
-<!-- End teaser video -->
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            It has been observed that deep neural networks (DNNs) often use both genuine as well as spurious features. In this work, we propose “Amending Inherent Interpretability via Self-Supervised Masking” (AIM), a simple yet interestingly effective method that promotes the network’s utilization of genuine features over spurious alternatives without requiring additional annotations. In particular, AIM uses features at multiple encoding stages to guide a self-supervised, sample-specific feature-masking process. As a result, AIM enables the training of well-performing and inherently interpretable models that faithfully summarize the decision process. We validate AIM across a diverse range of challenging datasets that test both out-of-distribution generalization and fine-grained visual understanding. These include general-purpose classification benchmarks such as ImageNet100, HardImageNet, and ImageWoof, as well as fine-grained classification datasets such as Waterbirds, TravelingBirds, and CUB-200. AIM demonstrates significant dual benefits: interpretability improvements, as measured by the Energy Pointing Game (EPG) score, and accuracy gains over strong baselines. These consistent gains across domains and architectures provide compelling evidence that AIM promotes the use of genuine and meaningful features that directly contribute to improved generalization and human-aligned interpretability.
-          </p>
+    <div class="container blog main inline" style="padding-top: 20px; padding-bottom: 20px;">
+        <style>
+            .code-demo pre.code::after { display: none; }
+            .code-demo pre.code { white-space: pre; overflow-x: auto; }
+        </style>
+        <div class="code-demo" id="demo" style="width: 100%">
+            <div class="window" role="img" aria-label="Code example">
+                <div class="titlebar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <div class="spacer"></div>
+                </div>
+                <div class="code-wrap">
+<pre class="code" data-language="python"><span class="token keyword">import</span> torch
+
+<span class="token comment"># ImageNet-pretrained AIM models (ConvNeXt-T)</span>
+<span class="token comment"># mask-area annealing period / loss weight:</span>
+<span class="token comment">#  aim_imagenet_anneal_all_alpha10   all epochs, alpha=10</span>
+<span class="token comment">#  aim_imagenet_anneal_all_alpha5    all epochs, alpha=5</span>
+<span class="token comment">#  aim_imagenet_anneal_half_alpha10  first half, alpha=10</span>
+model <span class="token operator">=</span> torch<span class="token punctuation">.</span>hub<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">'eyad-al-shami/AIM'</span><span class="token punctuation">,</span>
+                       <span class="token string">'aim_imagenet_anneal_all_alpha10'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># class logits + one binary mask per FPN level</span>
+logits<span class="token punctuation">,</span> masks <span class="token operator">=</span> model<span class="token punctuation">.</span><span class="token function">predict</span><span class="token punctuation">(</span>images<span class="token punctuation">)</span></pre>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</section>
-<!-- End paper abstract -->
 
-
-<!-- Image carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+    <div class="container blog main" style="text-align: justify">
+        <p class="text">
+            Checkpoints for CUB-200, TravelingBirds and Waterbirds (25% and 35% active-area variants) are available on the <a href="https://github.com/eyad-al-shami/AIM/releases/tag/v1.0.0">releases page</a>, with a download script and inference example in the <a href="https://github.com/eyad-al-shami/AIM">repository</a>.
+        </p>
     </div>
-  </div>
-</div>
-</div>
-</section> -->
-<!-- End image carousel -->
 
 
-
-
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="static/videos/Architecure_figure.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-<section class="hero is-small">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <div class="content">
-        <h2 class="title is-3">How AIM works</h2>
-        <div class="level-set has-text-justified">
-          <p>
+    <div class="container blog main first" id="blog-method" style="text-align: justify">
+        <h1>Method</h1>
+        <p class="text">
             AIM augments a standard backbone with a top-down path. At selected encoding stages, a lightweight mask estimator predicts a sample-specific <em>binary</em> mask that selects which spatial features may contribute to the decision. During training, an annealed active-area objective gradually shrinks the allowed mask area, so the network learns to keep only the features that genuinely support the prediction — supervised by nothing but the image label.
-          </p>
-        </div>
-      </div>
-      <video poster="" id="tree" autoplay="" controls="" muted="" loop="" playsinline="" height="100%">
-        <source src="static/videos/Architecure_figure.mp4" type="video/mp4">
-      </video>
+        </p>
     </div>
-  </div>
-</section>
+
+    <div class="container blog main">
+        <video loop playsinline muted autoplay controls src="../static/videos/Architecure_figure.mp4" style="width: 100%;"></video>
+        <p class="caption">
+            <b>The AIM architecture.</b> Mask estimators at multiple encoding stages produce binary masks that gate the top-down feature maps used for classification.
+        </p>
+    </div>
+
+    <div class="container blog main" style="text-align: justify">
+        <h2>100% sparse feature maps</h2>
+        <p class="text">
+            By employing binary mask estimators as a feature-selection mechanism, AIM makes its final decision from spatially sparse feature maps. Below: the masks produced at two stages of a ConvNeXt+AIM model, the resulting sparse feature maps (first two columns), and the final merged feature maps used for classification (last column).
+        </p>
+    </div>
+
+    <div class="container blog main">
+        <img src="../static/images/sparse_feature_maps@4x.png">
+        <p class="caption">
+            Model: ConvNeXt-tiny with AIM (2 stages, 35% active area).
+        </p>
+    </div>
+
+    <div class="container blog main" style="text-align: justify">
+        <h2>Mask evolution during training</h2>
+        <p class="text">
+            How the learned masks evolve across training epochs, for representative images from Hard ImageNet, ImageNet-100, and Waterbirds-100. Shown are the masks from two model stages and their element-wise merged mask — the spatial regions preserved in the final feature maps.
+        </p>
+    </div>
+
+    <div class="container blog main">
+        <div class="slide-menu">
+            <ul class="dots" id="slide-menu">
+                <li class="dot active"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+            </ul>
+        </div>
+
+        <div class="slide-content" style="display: block;">
+            <video loop playsinline muted autoplay src="../static/videos/him_1.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/him_2.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/him_3.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/him_4.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/im_5.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/im_6.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/im_7.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/wb_1.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/wb_2.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/wb_3.mp4" style="width: 100%"></video>
+        </div>
+        <div class="slide-content" style="display: none;">
+            <video loop playsinline muted autoplay src="../static/videos/wb_4.mp4" style="width: 100%"></video>
+        </div>
+
+        <p class="caption">
+            Model: ConvNeXt-tiny with AIM (2 stages, 35% active area).
+        </p>
+    </div>
 
 
-<section class="section hero is-small is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full">
-        <div class="content">
-          <h2 class="title is-3">AIM uses 100% sparse feature maps to make the final decision:</h2>
-          <div class="level-set has-text-justified">
+    <div class="container blog main">
+        <h1>Results</h1>
+    </div>
+
+    <div class="container blog main">
+        <h2>Accuracy and interpretability
+            <span style="font-size: 0.5em; font-weight: normal;">
+                (Hover over the image to magnify)
+            </span>
+        </h2>
+        <div style="position: relative; width: 100%; margin-top: 10px;">
+            <img id="imgSource" src="../static/images/results.png" style="width: 100%; height: auto; display: block;" alt="Results">
+            <div id="magnifier">
+                <img id="magImg" alt="" aria-hidden="true">
+            </div>
+        </div>
+
+        <p class="caption">
+            <b>Results.</b>
+            Across general-purpose (ImageNet-100, Hard ImageNet) and fine-grained (Waterbirds, TravelingBirds) benchmarks, AIM improves both classification accuracy and attribution localization (EPG score) over strong baselines — consistently, across backbones.
+        </p>
+
+        <script>
+
+const el = (s, p=document) => p.querySelector(s);
+
+const elImg = el("#imgSource");
+const elMag = el("#magnifier");
+const elMagImg = el("#magImg");
+const radius = elMag.offsetWidth / 2;
+const zoom = 2.5; // tune
+
+let rect = null;
+let lastEvt = null;
+let raf = 0;
+
+function syncRectAndSource() {
+  rect = elImg.getBoundingClientRect();
+  // mirror the rendered size so our math is in CSS px
+  elMagImg.style.width  = rect.width + "px";
+  elMagImg.style.height = rect.height + "px";
+  // use the actually chosen source (handles srcset)
+  const src = elImg.currentSrc || elImg.src;
+  if (elMagImg.src !== src) elMagImg.src = src;
+}
+
+function tick() {
+  raf = 0;
+  if (!lastEvt || !rect) return;
+
+  const cx = lastEvt.clientX, cy = lastEvt.clientY;
+  const x = cx - rect.left;
+  const y = cy - rect.top;
+
+  // skip work if pointer is outside the image
+  if (x < 0 || y < 0 || x > rect.width || y > rect.height) return;
+
+  // move the lens (compositor only)
+  elMag.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+
+  // bring (x,y) under the cursor to the lens center using only transforms
+  // order matters: rightmost applied first
+  elMagImg.style.transform =
+    `translate3d(${radius}px, ${radius}px, 0) ` + // final offset (not scaled)
+    `scale(${zoom}) ` +                            // scale around (0,0)
+    `translate3d(${-x}px, ${-y}px, 0)`;            // pre-scale translation
+}
+
+function onMove(e){
+  lastEvt = e;
+  if (!raf) raf = requestAnimationFrame(tick);
+}
+
+function onResizeOrScroll(){
+  // throttle to one recalc/frame
+  cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(() => {
+    syncRectAndSource();
+    tick();
+  });
+}
+
+// events
+elImg.addEventListener("pointermove", onMove, { passive: true });
+elImg.addEventListener("pointerdown", onMove, { passive: true });
+window.addEventListener("resize", onResizeOrScroll, { passive: true });
+window.addEventListener("scroll",  onResizeOrScroll, { passive: true });
+
+// init (after image has pixels)
+if (elImg.complete) syncRectAndSource();
+else elImg.addEventListener("load", syncRectAndSource);
+  
+        </script>
+    </div>
+
+
+    <div class="container blog main">
+        <h1>Citation</h1>
+<pre><code class="plaintext">@misc{alshami2025aimamendinginherentinterpretability,
+    title={AIM: Amending Inherent Interpretability via Self-Supervised Masking},
+    author={Eyad Alshami and Shashank Agnihotri and Bernt Schiele and Margret Keuper},
+    year={2025},
+    eprint={2508.11502},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2508.11502},
+}</code></pre>
+    </div>
+
+
+    <!-- Footer Page -->
+    <footer>
+        <div class="container">
             <p>
-              By employing binary mask estimators as a feature selection mechanism, AIM creates these sparse maps. For instance, we illustrate the masks produced at two stages in a ConvNeXt+AIM model alongside the generated spatially sparse feature maps (the first two columns). The last column demonstrates the final merged feature maps the model uses for classification.
+                This website is built on the <a href="https://shikun.io/projects/clarity">Clarity Template</a>, designed by <a href="https://shikun.io/">Shikun Liu</a>.
             </p>
-            <p class="note">
-              <sup aria-hidden="true">*</sup><span class="sr-only">Note: </span>Model: ConvNeXt‑tiny with AIM (2, 35%).
-            </p>
-          </div>
-          <div class="image-container small-width">
-            
-            <img src="static/images/sparse_feature_maps@4x.png" alt="AIM uses sparse feature maps" class="center-image">
-
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-
-
-<!-- Video carousel -->
-<section class="section hero is-small">
-  <div class="hero-body">
-    <div class="container lead-container">
-      
-      <p class="title">Mask Evolution Across Epochs</p>
-
-        <p class="">
-          Videos show the evolution of learned masks across training epochs for representative images from ImageNet‑100, Hard ImageNet, and Waterbirds‑100.
-        </p>
-        <p class="">
-          Displayed are masks from two model blocks and their element-wise merged masks, indicating the spatial regions preserved in the final feature maps.
-        </p>
-        <p class="note">
-          <sup aria-hidden="true">*</sup><span class="sr-only">Note: </span>Model: ConvNeXt‑tiny with AIM (2, 35%).
-        </p>
-      </div>
-      <div id="results-carousel" class="carousel results-carousel">
-        
-        <div class="item item-video1">
-            <video poster="" id="video1" autoplay controls muted loop height="100%">
-              <!-- Your video file here -->
-              <source src="static/videos/him_1.mp4"
-              type="video/mp4">
-            </video>
-        </div>
-        
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/him_2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/him_3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video4">
-          <video poster="" id="video4" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/him_4.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video5">
-          <video poster="" id="video5" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/im_5.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video6">
-          <video poster="" id="video6" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/im_6.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video7">
-          <video poster="" id="video7" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/im_7.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video8">
-          <video poster="" id="video8" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/wb_1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video9">
-          <video poster="" id="video9" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/wb_2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video10">
-          <video poster="" id="video10" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/wb_3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-
-        <div class="item item-video11">
-          <video poster="" id="video11" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/wb_4.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-<section class="section hero is-small is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full">
-        <div class="content">
-          <h2 class="title is-3">Results</h2>
-          <div class="level-set has-text-justified">
-            <p>
-              Across general-purpose (ImageNet-100, Hard ImageNet, ImageWoof) and fine-grained (Waterbirds, TravelingBirds, CUB-200) benchmarks, AIM improves both classification accuracy and attribution localization (EPG score) over strong baselines — consistently, across backbones.
-            </p>
-          </div>
-          <div class="image-container">
-            <img src="static/images/results.png" alt="Results" class="center-image">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Quick start -->
-<section class="section hero is-small">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full">
-        <div class="content">
-          <h2 class="title is-3">Try AIM in three lines</h2>
-          <div class="notification is-info is-light">
-            <strong>ImageNet-pretrained AIM models</strong> are available and ready to use via PyTorch Hub.
-          </div>
-          <p>
-            Load a model directly:
-          </p>
-          <pre><code class="python">import torch
-
-# available models:
-#   aim_imagenet_anneal_all_alpha10   - alpha=10, area annealed over all epochs
-#   aim_imagenet_anneal_all_alpha5    - alpha=5,  area annealed over all epochs
-#   aim_imagenet_anneal_half_alpha10  - alpha=10, area annealed over first half
-model = torch.hub.load("eyad-al-shami/AIM", "aim_imagenet_anneal_all_alpha10")
-
-logits, masks = model.predict(images)   # class logits + one binary mask per FPN level</code></pre>
-          <p>
-            Checkpoints for CUB-200, TravelingBirds and Waterbirds (25% and 35% active-area variants) are available on the
-            <a href="https://github.com/eyad-al-shami/AIM/releases/tag/v1.0.0" target="_blank">releases page</a>,
-            with a download script and inference example in the
-            <a href="https://github.com/eyad-al-shami/AIM" target="_blank">repository</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End quick start -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
-
-
-<!--BibTex citation -->
-  <section class="section is-light" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code class="plaintext">@misc{alshami2025aimamendinginherentinterpretability,
-        title={AIM: Amending Inherent Interpretability via Self-Supervised Masking}, 
-        author={Eyad Alshami and Shashank Agnihotri and Bernt Schiele and Margret Keuper},
-        year={2025},
-        eprint={2508.11502},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV},
-        url={https://arxiv.org/abs/2508.11502}, 
-  }</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  <!-- Code highlighting + copy button (adapted from the Clarity template) -->
-  <script>
-    hljs.highlightAll();
-
-    document.querySelectorAll('pre').forEach(function (pre) {
-      var button = document.createElement('button');
-      button.className = 'code-copy-btn';
-      button.innerHTML = '<i class="far fa-copy"></i><span class="copy-text"></span>';
-      pre.appendChild(button);
-
-      button.addEventListener('click', function (e) {
-        e.preventDefault();
-        var code = pre.querySelector('code');
-        if (!code) return;
-        navigator.clipboard.writeText(code.textContent).then(function () {
-          button.classList.add('copied');
-          var icon = button.querySelector('i');
-          var span = button.querySelector('.copy-text');
-          icon.className = 'fa-solid fa-check';
-          if (span) span.textContent = 'Copied';
-          setTimeout(function () {
-            icon.className = 'far fa-copy';
-            if (span) span.textContent = '';
-            button.classList.remove('copied');
-          }, 2000);
-        });
-      });
-    });
-  </script>
-
-  </body>
-  </html>
+    <script src="clarity/clarity.js"></script>
+    <script src="assets/scripts/carousel.js"></script>
+    <script src="assets/scripts/main.js"></script>
+</body>
+</html>
