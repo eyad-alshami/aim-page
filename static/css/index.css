@@ -265,38 +265,41 @@ section.hero{
     margin-left: 10px;
   }
 }
-/* ---- Code boxes (adapted from the Clarity template, as on the AnyUp page) ---- */
+/* ---- Code boxes ---- */
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap");
 
 pre,
 .content pre {
   font-family: "Fira Code", monospace;
   position: relative;
-  border-radius: 10px;
-  border: solid 1px #c6c6c6;
+  border-radius: 12px;
+  border: none;
   overflow: hidden;
-  background-color: #fafafa;
+  background-color: #282c34;
   padding: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 pre code,
 .content pre code {
-  background-color: #fafafa !important;
+  background-color: transparent !important;
+  color: #abb2bf;
   display: block;
-  padding: 1.25em 1.5em !important;
+  padding: 1.4em 1.6em !important;
   overflow-x: auto;
   font-family: "Fira Code", monospace;
   font-size: 0.85em;
+  line-height: 1.6;
 }
 
 .code-copy-btn {
   position: absolute;
   top: 10px;
   right: 12px;
-  background-color: #ececec;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 0.75em 0.5em;
-  color: #353535;
+  color: #d7dae0;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -312,11 +315,11 @@ pre code,
 }
 
 .code-copy-btn:hover {
-  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .code-copy-btn:active {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .code-copy-btn .copy-text {

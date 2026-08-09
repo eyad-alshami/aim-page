@@ -34,8 +34,8 @@
   href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -437,7 +437,12 @@
           </p>
           <pre><code class="python">import torch
 
+# available models:
+#   aim_imagenet_anneal_all_alpha10   - alpha=10, area annealed over all epochs
+#   aim_imagenet_anneal_all_alpha5    - alpha=5,  area annealed over all epochs
+#   aim_imagenet_anneal_half_alpha10  - alpha=10, area annealed over first half
 model = torch.hub.load("eyad-al-shami/AIM", "aim_imagenet_anneal_all_alpha10")
+
 masks = model.predict_masks(images)   # one binary mask per FPN level</code></pre>
           <p>
             Checkpoints for CUB-200, TravelingBirds and Waterbirds (25% and 35% active-area variants) are available on the
@@ -516,7 +521,7 @@ masks = model.predict_masks(images)   # one binary mask per FPN level</code></pr
 
   <!-- Code highlighting + copy button (adapted from the Clarity template) -->
   <script>
-    hljs.initHighlightingOnLoad();
+    hljs.highlightAll();
 
     document.querySelectorAll('pre').forEach(function (pre) {
       var button = document.createElement('button');
