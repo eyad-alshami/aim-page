@@ -34,6 +34,9 @@
   href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
@@ -432,7 +435,7 @@
           <p>
             Pretrained ImageNet models load directly through PyTorch Hub:
           </p>
-          <pre><code>import torch
+          <pre><code class="python">import torch
 
 model = torch.hub.load("eyad-al-shami/AIM", "aim_imagenet_anneal_all_alpha10")
 masks = model.predict_masks(images)   # one binary mask per FPN level</code></pre>
@@ -473,7 +476,7 @@ masks = model.predict_masks(images)   # one binary mask per FPN level</code></pr
   <section class="section is-light" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{alshami2025aimamendinginherentinterpretability,
+      <pre><code class="plaintext">@misc{alshami2025aimamendinginherentinterpretability,
         title={AIM: Amending Inherent Interpretability via Self-Supervised Masking}, 
         author={Eyad Alshami and Shashank Agnihotri and Bernt Schiele and Margret Keuper},
         year={2025},
@@ -506,10 +509,40 @@ masks = model.predict_masks(images)   # one binary mask per FPN level</code></pr
 </footer>
 
 <!-- Statcounter tracking code -->
-  
+
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->
+
+  <!-- Code highlighting + copy button (adapted from the Clarity template) -->
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    document.querySelectorAll('pre').forEach(function (pre) {
+      var button = document.createElement('button');
+      button.className = 'code-copy-btn';
+      button.innerHTML = '<i class="far fa-copy"></i><span class="copy-text"></span>';
+      pre.appendChild(button);
+
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        var code = pre.querySelector('code');
+        if (!code) return;
+        navigator.clipboard.writeText(code.textContent).then(function () {
+          button.classList.add('copied');
+          var icon = button.querySelector('i');
+          var span = button.querySelector('.copy-text');
+          icon.className = 'fa-solid fa-check';
+          if (span) span.textContent = 'Copied';
+          setTimeout(function () {
+            icon.className = 'far fa-copy';
+            if (span) span.textContent = '';
+            button.classList.remove('copied');
+          }, 2000);
+        });
+      });
+    });
+  </script>
 
   </body>
   </html>
