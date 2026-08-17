@@ -103,11 +103,10 @@
 
 <span class="token comment"># ImageNet-pretrained AIM models (ConvNeXt-T)</span>
 <span class="token comment"># mask-area annealing period / loss weight:</span>
-<span class="token comment">#  aim_imagenet_anneal_all_alpha10   all epochs, alpha=10</span>
-<span class="token comment">#  aim_imagenet_anneal_all_alpha5    all epochs, alpha=5</span>
 <span class="token comment">#  aim_imagenet_anneal_half_alpha10  first half, alpha=10</span>
+<span class="token comment">#  aim_imagenet_anneal_all_alpha5    all epochs, alpha=5</span>
 model <span class="token operator">=</span> torch<span class="token punctuation">.</span>hub<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">'eyad-al-shami/AIM'</span><span class="token punctuation">,</span>
-                       <span class="token string">'aim_imagenet_anneal_all_alpha10'</span><span class="token punctuation">)</span>
+                       <span class="token string">'aim_imagenet_anneal_half_alpha10'</span><span class="token punctuation">)</span>
 
 <span class="token comment"># class logits + one binary mask per FPN level</span>
 logits<span class="token punctuation">,</span> masks <span class="token operator">=</span> model<span class="token punctuation">.</span><span class="token function">predict</span><span class="token punctuation">(</span>images<span class="token punctuation">)</span></pre>
